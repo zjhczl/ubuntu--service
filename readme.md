@@ -17,14 +17,22 @@ WantedBy=multi-user.target
 ```
 ## 执行命令
 重新加载 systemd 配置：
-
+```
 sudo systemctl daemon-reload
+```
 启动服务：
-
+```
 sudo systemctl start ros-recorder
+```
 设置服务开机启动：
-
+```
 sudo systemctl enable ros-recorder
+```
 检查服务状态：
-
+```
 sudo systemctl status ros-recorder
+```
+检查日志：
+```
+journalctl -u bag-zip.service
+```
