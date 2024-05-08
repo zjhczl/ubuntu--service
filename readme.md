@@ -9,7 +9,9 @@ Requires=B.service
 [Service]
 Type=simple
 ExecStart=/bin/bash -c 'source /opt/ros/noetic/setup.bash; source /ssd/catkin_ws/devel/setup.bash; roslaunch fixposition_driver_ros1 tcp.launch'
-Restart=on-failure
+Restart=always
+RestartSec=5
+
 
 [Install]
 WantedBy=multi-user.target
