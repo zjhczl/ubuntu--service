@@ -1,5 +1,22 @@
 # ubuntu安装service
-## service文件
+## service文件1
+```
+[Unit]
+Description=Setup NAT and wlan0 interface
+Wants=network.target network-online.target
+Before=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/sbin/ifconfig wlan0 192.168.200.1
+ExecStart=/usr/bin/systemctl restart hostapd
+ExecStart=/bin/bash -c 'nft add table nat'
+ExecStart=/sbin/iptables -t nat -A POSTROUTING -o usb0 -j MASQUERADE
+
+[Install]
+WantedBy=multi-user.target
+```
+## service文件2
 ```
 [Unit]
 Description=ros-rtk2
